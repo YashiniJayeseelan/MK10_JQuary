@@ -1,12 +1,18 @@
-function semak() {
-    var user = $("#username").val();
-    var pass = $("#password").val();
+$(document).on("pagecreate", function () {
 
-    if (user == "" || pass == "") {
-        alert("Sila isi kedua-dua ruang Username dan Password!");
-        return false;
-    }
-    
-    alert("Proses log masuk sedang dilakukan...");
-    return true;
-}
+    $("#btnLogin").on("click", function (e) {
+
+        var user = $("#username").val();
+        var pass = $("#password").val();
+
+        if (user === "" || pass === "") {
+            e.preventDefault();
+            $("#popupAmaran").popup("open");
+        } else {
+            e.preventDefault(); // stop form submit
+            $.mobile.changePage("#page2");
+        }
+
+    });
+
+});
