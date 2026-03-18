@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login jQuery Mobile - DFK20013</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script>
+        $(document).on("pagecreate", function() {
+
+            $("#btnLogin").click(function(e) {
+
+                var user = $("#username").val();
+                var pass = $("#password").val();
+
+
+                if (user == "" || pass == "") {
+                    e.preventDefault(); 
+                    $("#popupAmaran").popup("open", { positionTo: "window", transition: "pop" });
+                } else {
+                    alert("Data lengkap! Menghantar ke login.php...");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<div data-role="page" id="pageLogin">
+
+    <div data-role="header" data-theme="b">
+        <h1>Login Page</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <form action="login.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" placeholder="Masukkan nama pengguna">
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Masukkan kata laluan">
+
+            <button type="submit" id="btnLogin" class="ui-btn ui-corner-all ui-shadow ui-btn-b">Submit</button>
+        </form>
+
+        <div data-role="popup" id="popupAmaran" class="ui-content" data-overlay-theme="b" data-theme="a" data-dismissible="true">
+            <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+            <p><strong>Amaran!</strong><br>Sila isi kedua-dua Username dan Password sebelum menghantar.</p>
+        </div>
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+        <h4>Copyright &copy; 2026</h4>
+    </div>
+
+</div>
+
+</body>
+</html>
